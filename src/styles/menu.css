@@ -1,10 +1,15 @@
+/* ============================================================
+   SEÇÃO SERVIÇOS (#menu) - ESTILO PREMIUM TAG VERMELHA
+   ============================================================ */
+
 #menu {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background-color: var(--color-neutral-1); /* fundo escuro premium */
+    padding: 80px 8%;
+    background-color: var(--color-primary-1); /* Fundo Preto */
 }
 
 /* CONTAINER DOS SERVIÇOS */
@@ -12,87 +17,123 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap; /* Garante que os cards quebrem linha se necessário */
     gap: 24px;
     margin-top: 48px;
 }
 
-/* CARD DE SERVIÇO */
+/* CARD DE SERVIÇO (DARK PREMIUM) */
 .dish {
     display: flex;
     flex-direction: column;
     align-items: center;
     border-radius: 22px;
     gap: 18px;
-    width: 25%;
-    padding: 28px 22px;
-    background-color: #fffdfd; /* card escuro */
-    box-shadow: 0px 0px 22px 6px rgba(0, 0, 0, 0.45);
-    position: center;
+    width: 30%; /* Ajustado para caber 3 por linha com folga */
+    min-width: 300px; /* Não deixa o card ficar pequeno demais */
+    padding: 40px 25px;
+    background-color: var(--color-primary-2); /* Card Cinza Escuro */
+    border: 1px solid #222;
+    box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.7);
+    position: relative;
     overflow: hidden;
-    transition: transform .35s ease, box-shadow .35s ease;
+    transition: transform .35s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow .35s ease, border-color .35s ease;
 }
 
 .dish:hover {
-    transform: translateY(-6px);
-    box-shadow: 0px 0px 28px 10px rgba(106, 69, 255, 0.25);
+    transform: translateY(-12px);
+    box-shadow: 0px 10px 40px rgba(204, 0, 0, 0.2); 
+    border-color: var(--color-primary-4); 
 }
 
-/* TAG SUPERIOR (ICONE) */
+/* TAG SUPERIOR (ÍCONE / DESTAQUE EM VERMELHO) */
 .dish-heart {
     position: absolute;
-    background: linear-gradient(135deg, #6a45ff, #3d09e9);
+    background: linear-gradient(135deg, var(--color-primary-4), var(--color-primary-3));
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
+    color: var(--color-neutral-0); 
+    width: 70px;
+    height: 70px;
+    right: -5px;
+    top: -5px;
+    border-radius: 0px 0px 0px 35px; /* Curva estilo Apple no canto interno */
+    box-shadow: -4px 4px 10px rgba(0, 0, 0, 0.4);
+    z-index: 5;
+}
+
+/* TÍTULO DO SERVIÇO */
+.dish-title {
     color: var(--color-neutral-0);
-    width: 68px;
-    height: 68px;
-    right: -10px;
-    top: -10px;
-    border-radius: 0px 38px 0px 42px;
-}
-
-/* TEXTO DESCRITIVO */
-.dish-description {
-    color: #fffdfd;
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-top: 15px;
     text-align: center;
-    font-size: 0.95rem;
-    line-height: 1.5;
 }
 
-/* AVALIAÇÃO / DESTAQUE */
+/* TEXTO DESCRITIVO (COPYWRITING) */
+.dish-description {
+    color: var(--color-neutral-1); 
+    text-align: center;
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.dish-description strong {
+    color: var(--color-neutral-0);
+    font-weight: 600;
+}
+
+/* AVALIAÇÃO / ESTRELAS */
+.dish-rate {
+    margin-bottom: 10px;
+}
+
 .dish-rate i {
-    color: var(--color-primary-6); /* dourado */
+    color: var(--color-primary-3); 
+    font-size: 0.9rem;
+    margin: 0 2px;
 }
 
-/* BLOCO INFERIOR (CTA / PREÇO / DETALHE) */
+/* BLOCO INFERIOR (CTA / PREÇO) */
 .dish-price {
+    width: 100%;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 16px;
+    margin-top: auto;
+    padding-top: 25px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.dish-price h4 {
     font-weight: 600;
     color: var(--color-neutral-0);
+    font-size: 1.1rem;
 }
 
-/* RESPONSIVO */
+/* RESPONSIVO (TABLETS E CELULARES) */
 @media screen and (max-width: 1170px) {
-    #dishes {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
     .dish {
-        width: calc(50% - 12px);
+        width: calc(45% - 12px); /* 2 por linha */
     }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
+    #dishes {
+        gap: 30px;
+    }
+    
     .dish {
         width: 100%;
+        max-width: 400px; /* 1 por linha no celular */
     }
 
     #menu .section-subtitle {
         text-align: center;
+        font-size: 2rem;
     }
 }

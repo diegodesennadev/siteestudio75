@@ -1,113 +1,116 @@
+/* ============================================================
+   SEÇÃO TESTIMONIALS - ALINHAMENTO BLINDADO (DIEGO + TEXTOS)
+   ============================================================ */
+
 #testimonials {
-    min-height: calc(100vh - 91px);
-    display: flex;
-    align-items: center;
+    display: grid;
+    /* Define duas colunas: uma de 300px para a foto e o resto para o texto */
+    grid-template-columns: 300px 1fr; 
+    align-items: center; /* Alinha verticalmente ao centro */
     justify-content: center;
-    gap: 64px;
+    gap: 60px; /* Espaço entre sua foto e o texto */
+    padding: 100px 8%;
+    max-width: 1400px;
+    margin: 0 auto;
     background-color: var(--color-primary-1);
+    min-height: 100vh;
 }
 
-/* IMAGEM LATERAL (ANTES CHEF, AGORA CONCEITO VISUAL) */
+/* SUA FOTO (DIEGO) - TRAVADA NO CENTRO DA COLUNA */
 #testimonial_chef {
-    width: 480px;
-    height: auto;
-    opacity: 0.95;
+    width: 300px !important;
+    height: 400px !important;
+    object-fit: cover;
+    border-radius: 18px;
+    border: 2px solid var(--color-primary-4);
+    box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.5);
+    justify-self: center; /* Garante que ela não "dance" na coluna */
 }
 
-/* TÍTULO */
-#testimonials .section-subtitle {
-    font-size: 3rem;
-    color: var(--color-neutral-1);
-}
-
-/* CONTEÚDO */
+/* BLOCO DE CONTEÚDO (DIREITA) */
 #testimonials_content {
-    width: 50%;
-}
-
-/* LISTA DE DEPOIMENTOS */
-#feedbacks {
     display: flex;
     flex-direction: column;
-    gap: 24px;
-    margin-bottom: 40px;
-    margin-top: 30px;
+    justify-content: center;
+    text-align: left;
 }
 
-/* CARD DEPOIMENTO */
+#testimonials_content .section-subtitle {
+    font-size: 2.2rem;
+    color: var(--color-neutral-0);
+    margin-bottom: 10px;
+    line-height: 1.2;
+}
+
+#testimonials_content .description {
+    margin-bottom: 30px;
+    color: var(--color-neutral-1);
+    line-height: 1.6;
+    max-width: 600px;
+}
+
+/* GRID DE DEPOIMENTOS (DENTRO DA COLUNA DE TEXTO) */
+#feedbacks {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 colunas de depoimentos */
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
 .feedback {
     display: flex;
     align-items: center;
-    gap: 20px;
-    background-color: #ffffff;
-    padding: 16px;
-    border-radius: 14px;
-    box-shadow: 0px 0px 18px 6px rgba(0, 0, 0, 0.12);
-    transition: transform .3s ease, box-shadow .3s ease;
+    background-color: var(--color-primary-2);
+    padding: 12px 15px;
+    border-radius: 10px;
+    gap: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.feedback:hover {
-    transform: translateY(-4px);
-    box-shadow: 0px 0px 26px 8px rgba(61, 9, 233, 0.18);
-}
-
-/* AVATAR CLIENTE */
 .feedback-avatar {
-    width: 90px;
-    height: 90px;
-    border-radius: 100%;
+    width: 45px !important;
+    height: 45px !important;
+    min-width: 45px;
+    border-radius: 6px;
     object-fit: cover;
-    border: 3px solid var(--color-primary-5);
+    border: 1px solid var(--color-primary-4);
 }
 
-/* TEXTO */
 .feedback-content p {
-    display: flex;
-    justify-content: space-between;
-    font-weight: 500;
-    color: #2b2b2b;
+    font-size: 0.75rem;
+    margin: 0;
+    color: var(--color-neutral-0);
 }
 
-/* NOME / DESTAQUE */
-.feedback-content p span {
-    color: var(--color-primary-6);
-    font-weight: 700;
-}
+/* ============================================================
+   RESPONSIVIDADE (TABLET E CELULAR)
+   ============================================================ */
 
-/* RESPONSIVO */
-@media screen and (max-width: 1170px) {
+@media screen and (max-width: 1100px) {
     #testimonials {
-        flex-direction: column;
-    }
-
-    #testimonials .section-subtitle {
+        /* No mobile e tablet, vira uma coluna só para não esmagar nada */
+        grid-template-columns: 1fr;
         text-align: center;
-        font-size: 2.5rem;
-    }
-
-    #testimonial_chef {
-        display: none;
+        padding: 80px 5%;
+        gap: 40px;
     }
 
     #testimonials_content {
-        width: 70%;
-        display: flex;
-        flex-direction: column;
         align-items: center;
-    }
-}
-
-@media screen and (max-width: 600px) {
-    #testimonials .section-subtitle {
-        font-size: 2rem;
+        text-align: center;
     }
 
-    #testimonials_content {
+    #testimonials_content .description {
+        margin: 0 auto 30px auto;
+    }
+
+    #feedbacks {
+        grid-template-columns: 1fr; /* Depoimentos um embaixo do outro no celular */
         width: 100%;
+        max-width: 450px;
     }
 
     .feedback {
-        flex-direction: column;
-        text-align: center;
+        text-align: left; /* Mantém o texto do depoimento legível */
     }
 }

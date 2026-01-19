@@ -1,41 +1,84 @@
+/* ============================================================
+   FOOTER (RODAPÉ) — ASSINATURA DE LUXO ESTÚDIO75
+   ============================================================ */
+
 footer {
-    background-color: var(--color-primary-2);
-    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    background-color: #000000; /* Preto absoluto para fechar a página */
+    border-top: 1px solid rgba(255, 255, 255, 0.05); /* Linha ultra-fina */
+    padding: 60px 0 40px 0; /* Mais respiro vertical estilo Apple */
 }
 
 /* CONTAINER */
 #footer_items {
+    max-width: 1400px;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 24px 8%;
+    padding: 0 8%;
 }
 
-/* TEXTO INSTITUCIONAL */
+/* LOGO NO FOOTER (Opcional, mas traz autoridade) */
+footer #logo_text {
+    font-size: 1.4rem;
+    opacity: 0.9;
+}
+
+/* TEXTO DE COPYRIGHT */
 #copyright {
-    color: var(--color-neutral-1);
-    font-weight: 500;
-    font-size: 0.95rem;
-    opacity: 0.85;
+    color: #86868b; /* Cinza oficial dos textos de rodapé da Apple */
+    font-weight: 400;
+    font-size: 0.85rem; /* Menor e mais elegante */
+    letter-spacing: 0.3px;
 }
 
-/* SOCIAL / LINKS (CASO EXISTAM) */
+/* SOCIAL MEDIA BUTTONS - ESTILO BOTÕES DE INTERFACE */
+footer .social-media-buttons {
+    display: flex;
+    gap: 12px;
+}
+
 footer .social-media-buttons a {
-    background-color: #ffffff;
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    transition: transform .3s ease, box-shadow .3s ease;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.03); /* Vidro escuro */
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px; /* Cantos levemente arredondados */
+    color: var(--color-primary-4); /* Vermelho autoridade */
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 footer .social-media-buttons a:hover {
-    transform: translateY(-3px);
-    box-shadow: 0px 6px 18px rgba(61, 9, 233, 0.25);
+    transform: translateY(-5px);
+    background-color: var(--color-primary-4); 
+    color: #ffffff; /* Ícone branco no destaque */
+    border-color: var(--color-primary-4);
+    box-shadow: 0px 10px 20px rgba(204, 0, 0, 0.3);
 }
 
-/* RESPONSIVO */
-@media screen and (max-width: 600px) {
+/* RESPONSIVO (MOBILE FIRST) */
+@media screen and (max-width: 768px) {
+    footer {
+        padding: 40px 0;
+    }
+
     #footer_items {
         flex-direction: column;
-        gap: 20px;
+        gap: 30px; /* Mais espaço entre elementos no celular */
         text-align: center;
+    }
+
+    #copyright {
+        order: 2; /* Texto vai para baixo */
+        line-height: 1.6;
+    }
+
+    footer .social-media-buttons {
+        order: 1; /* Ícones ficam em destaque em cima */
     }
 }

@@ -1,95 +1,157 @@
+/* ============================================================
+   HEADER & NAVBAR — ESTILO APPLE GLASS DARK COM LOGO75
+   ============================================================ */
+
 header {
     width: 100%;
-    padding: 28px 8%;
-    position: sticky;
+    padding: 12px 8%; /* Altura reduzida para visual slim */
+    position: fixed; 
     top: 0;
-    background-color: rgba(0, 51, 102, 0.92); /* Azul autoridade com leve transparência */
-    backdrop-filter: blur(6px); /* efeito moderno */
-    z-index: 3;
+    left: 0;
+    background-color: rgba(5, 5, 5, 0.85); /* Preto Apple translúcido */
+    backdrop-filter: blur(15px); 
+    -webkit-backdrop-filter: blur(15px); 
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08); 
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
 }
 
 #navbar {
     width: 100%;
+    max-width: 1400px; 
+    margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-/* LOGO */
-#nav_logo {
-    font-size: 24px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    color: var(--color-primary-1); /* Azul autoridade */
+/* ESTILIZAÇÃO DA LOGO75 */
+#logo75 {
+    height: 45px; /* Altura perfeita para o menu */
+    width: auto;
+    object-fit: contain;
+    display: block;
+    transition: transform 0.3s ease;
 }
 
-/* MENU */
+#logo75:hover {
+    transform: scale(1.05);
+}
+
+/* MENU DESKTOP */
 #nav_list {
     display: flex;
     list-style: none;
-    gap: 48px;
+    gap: 35px; 
 }
 
 .nav-item a {
     text-decoration: none;
-    color: var(--color-neutral-0); /* Branco para contraste */
+    color: #a1a1a6; /* Cinza Apple */
     font-weight: 500;
-    transition: color .3s ease, border-bottom .3s ease;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
 }
 
-/* HOVER PREMIUM */
-.nav-item a:hover {
-    color: var(--color-primary-4); /* Verde crescimento */
-}
-
-/* ITEM ATIVO */
+.nav-item a:hover, 
 .nav-item.active a {
-    color: var(--color-primary-4); /* Verde crescimento */
-    border-bottom: 2px solid var(--color-primary-4);
-    padding-bottom: 4px;
+    color: var(--color-neutral-0); /* Branco puro no destaque */
 }
 
+/* Indicador de página ativa */
+.nav-item.active a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-primary-4);
+}
+
+/* BOTÃO MOBILE (HAMBÚRGUER) */
 #mobile_btn {
     display: none;
-    color: var(--color-primary-4); /* Verde para botão mobile */
+    color: var(--color-neutral-0);
+    border: none;
+    background: transparent;
+    font-size: 1.5rem;
+    cursor: pointer;
 }
 
-#mobile_menu {
-    display: none;
-}
+/* ============================================================
+   RESPONSIVIDADE (FOCO NO MOBILE)
+   ============================================================ */
 
-/* RESPONSIVO */
 @media screen and (max-width: 1170px) {
-    #nav_list,
-    #navbar .btn-default {
-        display: flex; /* Ajustado para mostrar em mobile se necessário */
+    header {
+        padding: 10px 5%;
+        height: 70px; /* Trava altura no mobile */
+    }
+
+    #nav_list, 
+    .desktop-only {
+        display: none !important; /* Esconde menu e botão principal */
     }
 
     #mobile_btn {
         display: block;
-        border: none;
-        background-color: transparent;
-        font-size: 1.5rem;
-        cursor: pointer;
+    }
+
+    #logo75 {
+        height: 35px; /* Logo um pouco menor no celular */
+    }
+
+    /* MENU MOBILE DROPDOWN */
+    #mobile_menu {
+        display: none;
+        position: fixed;
+        top: 70px; 
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: #050505;
+        z-index: 999;
+        padding: 40px 8%;
+        flex-direction: column;
+        align-items: center;
     }
 
     #mobile_menu.active {
         display: flex;
-        flex-direction: column;
-        align-items: center;
-        background-color: var(--color-primary-1); /* Azul autoridade */
-        padding: 20px 0;
+        animation: slideDown 0.4s ease forwards;
+    }
+
+    @keyframes slideDown {
+        from { opacity: 0; transform: translateY(-20px); }
+        to { opacity: 1; transform: translateY(0); }
     }
 
     #mobile_nav_list {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-        margin: 12px 0px;
+        list-style: none;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 30px;
     }
 
     #mobile_nav_list .nav-item {
-        list-style: none;
+        margin: 20px 0;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+        padding-bottom: 15px;
+    }
+
+    #mobile_nav_list .nav-item a {
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: var(--color-neutral-0);
+        text-decoration: none;
+    }
+
+    #mobile_menu .btn-default {
+        width: 100%;
+        max-width: 300px;
         text-align: center;
-    } 
+    }
 }
